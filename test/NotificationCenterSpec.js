@@ -4,7 +4,7 @@ var NotificationCenter = require('./../lib/NotificationCenter'),
 
 var observer = function() { };
 
-describe('NotificationCenter', function() {
+describe('NotificationCenter (Observer)', function() {
 	describe('#addObserver', function() {
 		it('should add an observer', function() {
 			NotificationCenter.getInstance().addObserver('event', observer);
