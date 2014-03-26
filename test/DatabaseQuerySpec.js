@@ -14,10 +14,10 @@ describe('MySQLQuery (Decorator)', function() {
 	
 	it('should return results', function(done) {
 		var connection = DatabaseConnectionFactory.getInstance().make(MySQLDatabaseConnectionAdapter.identifier, ['mysql://localhost']);
-		connection.select('users', ['id', 'username']).where('uid = 1').limit(1).execute(function(rows) {
-			expect(rows).to.have.length(1);
-			expect(rows[0].id).to.equal(1);
-			expect(rows[0].username).to.equal('legosjedi');
+		connection.select('users', ['id', 'username']).where('uid = 1').limit(1).execute(function(results) {
+			expect(results).to.have.length(1);
+			expect(results.row(0).id).to.equal(1);
+			expect(results.row(0).username).to.equal('legosjedi');
 			
 			done();
 		});
