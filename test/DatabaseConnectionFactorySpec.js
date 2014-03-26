@@ -3,7 +3,7 @@ var DatabaseConnectionFactory = require('./../lib/DatabaseConnectionFactory'),
 	chai = require('chai'),
 	expect = chai.expect;
 
-describe('DatabaseConnectionFactory', function() {
+describe('DatabaseConnectionFactory (Factory)', function() {
 	describe('#make', function() {
 		it('should create a new database connection', function() {
 			var connection = DatabaseConnectionFactory.getInstance().make(MySQLDatabaseConnectionAdapter.identifier, ['mysql://localhost']);
