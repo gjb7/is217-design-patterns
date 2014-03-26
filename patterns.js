@@ -5,8 +5,8 @@ var Application = require('./lib/Application'),
 
 NotificationCenter.getInstance().addObserver(Application.LAUNCH_EVENT, function() {
 	var connection = DatabaseConnectionFactory.getInstance().make(MySQLDatabaseConnectionAdapter.identifier, ['mysql://localhost']);
-	connection.select('users', ['id', 'username']).where('uid = 1').limit(1).execute(function(rows) {
-		console.log('Found user: ' + rows[0].username);
+	connection.select('users', ['id', 'username']).where('uid = 1').limit(1).execute(function(result) {
+		console.log('Found user: ' + result.row(0).username);
 	});
 });
 
