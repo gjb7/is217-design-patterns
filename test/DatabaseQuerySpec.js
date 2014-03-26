@@ -4,6 +4,14 @@ var DatabaseConnectionFactory = require('./../lib/DatabaseConnectionFactory'),
 	expect = chai.expect;
 
 describe('MySQLQuery (Decorator)', function() {
+	it('should implement MySQLSelectQueryBuilder methods', function() {
+		var connection = DatabaseConnectionFactory.getInstance().make(MySQLDatabaseConnectionAdapter.identifier, ['mysql://localhost']);
+		var query = connection.select('users');
+		
+		expect(query).to.respondTo('where');
+		expect(query).to.respondTo('limit');
+	});
+	
 	it('should return results', function(done) {
 		var connection = DatabaseConnectionFactory.getInstance().make(MySQLDatabaseConnectionAdapter.identifier, ['mysql://localhost']);
 		connection.select('users', ['id', 'username']).where('uid = 1').limit(1).execute(function(rows) {
